@@ -32,15 +32,17 @@ terraform apply -var-file="02_terraform.tfvars"
             Cluster autoscaler IAM role and policy
 
 ## 3. Post-Deployment Steps
-    Configure kubectl:
-    ```sh
-    aws eks update-kubeconfig --region us-east-1 --name my-test-cluster
-    ``` 
-    Deploy Cluster Autoscaler:
-    ```sh
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
-    kubectl annotate serviceaccount cluster-autoscaler -n kube-system eks.amazonaws.com/role-arn=<AUTOSCALER_ROLE_ARN>
-    ```
+
+Configure kubectl:
+```bash
+aws eks update-kubeconfig --region us-east-1 --name my-test-cluster
+``` 
+
+Deploy Cluster Autoscaler:
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+kubectl annotate serviceaccount cluster-autoscaler -n kube-system eks.amazonaws.com/role-arn=<AUTOSCALER_ROLE_ARN>
+```
 
 ## 4. Key Outputs
     EKS cluster endpoint
