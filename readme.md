@@ -8,28 +8,28 @@ terraform plan -var-file="02_terraform.tfvars"
 terraform apply -var-file="02_terraform.tfvars"
 ```
 ## 2. Infrastructure Components Created (in order)
-    Step 1: Provider & Variables (00_provider.tf, 01_variable.tf)
-            AWS provider configuration
-            All variable definitions with defaults
-    Step 2: VPC Infrastructure (06_vpc.tf)
-            VPC with CIDR 10.1.0.0/16
-            Internet Gateway
-            2 Public subnets (10.1.1.0/24, 10.1.2.0/24)
-            2 Private subnets (10.1.3.0/24, 10.1.4.0/24)
-            NAT Gateway with Elastic IP
-            Route tables and associations
-    Step 3: IAM Roles (03_iam.tf)
-            EKS cluster service role with AmazonEKSClusterPolicy
-            EKS node group role with:
-            AmazonEKSWorkerNodePolicy
-            AmazonEKS_CNI_Policy
-            AmazonEC2ContainerRegistryReadOnly
-    Step 4: EKS Cluster & OIDC (05_eks_cluster.tf)
-            EKS cluster in both public and private subnets
-            Node group in private subnets only
-            TLS certificate data source
-            OIDC provider for IRSA
-            Cluster autoscaler IAM role and policy
+Step 1: Provider & Variables (00_provider.tf, 01_variable.tf)
+        AWS provider configuration
+        All variable definitions with defaults
+Step 2: VPC Infrastructure (06_vpc.tf)
+        VPC with CIDR 10.1.0.0/16
+        Internet Gateway
+        2 Public subnets (10.1.1.0/24, 10.1.2.0/24)
+        2 Private subnets (10.1.3.0/24, 10.1.4.0/24)
+        NAT Gateway with Elastic IP
+        Route tables and associations
+Step 3: IAM Roles (03_iam.tf)
+        EKS cluster service role with AmazonEKSClusterPolicy
+        EKS node group role with:
+        AmazonEKSWorkerNodePolicy
+        AmazonEKS_CNI_Policy
+        AmazonEC2ContainerRegistryReadOnly
+Step 4: EKS Cluster & OIDC (05_eks_cluster.tf)
+        EKS cluster in both public and private subnets
+        Node group in private subnets only
+        TLS certificate data source
+        OIDC provider for IRSA
+        Cluster autoscaler IAM role and policy
 
 ## 3. Post-Deployment Steps
 
@@ -45,9 +45,9 @@ kubectl annotate serviceaccount cluster-autoscaler -n kube-system eks.amazonaws.
 ```
 
 ## 4. Key Outputs
-    EKS cluster endpoint
-    Cluster autoscaler IAM role ARN
-    VPC and subnet IDs
+EKS cluster endpoint
+Cluster autoscaler IAM role ARN
+VPC and subnet IDs
 
 
 
