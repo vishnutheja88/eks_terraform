@@ -1,30 +1,30 @@
 variable "aws_region" {
   description = "The AWS region to deploy resources in"
   type        = string
-  default     = "us-east-1"
+  default     = "us-west-1"
 }
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
-  default     = "192.168.0.0/16"
+  default     = "10.1.0.0/16"
 }
 
 variable "public_subnet_cidrs" {
   type        = list(string)
   description = "public subnets CIDR blocks"
-  default     = ["192.168.1.0/24", "192.168.2.0/24"]
+  default     = ["10.1.1.0/24", "10.1.2.0/24"]
 }
 
 variable "private_subnet_cidrs" {
   type        = list(string)
   description = "private subnets CIDR blocks"
-  default     = ["192.168.3.0/24", "192.168.4.0/24"]
+  default     = ["10.1.3.0/24", "10.1.4.0/24"]
 }
 
 variable "availability_zones" {
   type        = list(string)
   description = "The availability zones to deploy resources in"
-  default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  default     = ["us-west-1a", "us-west-1b", "us-west-1c"]
 }
 
 variable "cluster_name" {
@@ -43,7 +43,7 @@ variable "node_group_name" {
 variable "eks_version" {
   description = "The version of EKS to use"
   type        = string
-  default     = "1.27"
+  default     = "1.32"
 }
 variable "node_group_instance_type" {
   description = "The instance type of the EKS node group"
@@ -70,5 +70,5 @@ variable "min_size" {
 variable "aws_profile" {
   description = "The AWS profile to use"
   type        = string
-  default     = "default"
+  default     = "vamsi"
 }
